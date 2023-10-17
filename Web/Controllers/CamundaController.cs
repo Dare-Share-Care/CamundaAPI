@@ -22,4 +22,21 @@ public class CamundaController : ControllerBase
         var result = await _deploymentService.Deploy(dto.Name);
         return Ok(result);
     }
+    
+    [HttpPost]
+    [Route("deployment/delete")]
+    public async Task<IActionResult> DeleteCamundaDeployment([FromBody] DeploymentDto dto)
+    {
+        var response = await _deploymentService.DeleteDeployment(dto.Id);
+        return Ok(response);
+    }
+
+    [HttpGet]
+    [Route("deployment/list")]
+    public async Task<IActionResult> GetCamundaDeployments()
+    {
+        var response = await _deploymentService.GetDeployments();
+        return Ok(response);
+    }
+
 }
