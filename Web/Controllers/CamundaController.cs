@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Web.Camunda;
 using Web.Models.Dtos;
 using Web.Services;
 
@@ -10,11 +11,13 @@ public class CamundaController : ControllerBase
 {
     private readonly CamundaDeployment _camundaDeployment;
     private readonly CamundaProcess _camundaProcess;
+    private readonly CamundaTask _camundaTask;
 
-    public CamundaController(CamundaDeployment camundaDeployment, CamundaProcess camundaProcess)
+    public CamundaController(CamundaDeployment camundaDeployment, CamundaProcess camundaProcess, CamundaTask camundaTask)
     {
         _camundaDeployment = camundaDeployment;
         _camundaProcess = camundaProcess;
+        _camundaTask = camundaTask;
     }
     
     [HttpPost]
@@ -55,5 +58,21 @@ public class CamundaController : ControllerBase
     {
         var response = await _camundaProcess.GetProcesses();
         return Ok(response);
+    }
+    
+    [HttpGet]
+    [Route("tasks")]
+    public async Task<IActionResult> GetCamundaTasks()
+    {
+        var response = await _camundaTask.GetTasks();
+        return Ok(response);
+    }
+
+    [HttpPost]
+    [Route("task/{id}/complete")]
+    public async Task<IActionResult> CompleteCamundaTaskWithCondition(string id, [FromBody] CompleteTaskDto? dto)
+    {
+        var result = await _camundaTask.CompleteTask(id, dto);
+        return Ok(result);
     }
 }

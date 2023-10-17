@@ -1,3 +1,4 @@
+using Web.Camunda;
 using Web.Services;
 
 var policyName = "AllowOrigin";
@@ -20,10 +21,10 @@ builder.Services.AddCors(options =>
         });
 });
 
-
 //Camunda Services
 builder.Services.AddScoped<CamundaDeployment>();
 builder.Services.AddScoped<CamundaProcess>();
+builder.Services.AddScoped<CamundaTask>();
 
 //Web Services
 builder.Services.AddScoped<EmailService>();

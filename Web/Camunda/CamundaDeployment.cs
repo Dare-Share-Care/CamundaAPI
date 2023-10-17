@@ -3,7 +3,7 @@ using System.Text;
 using System.Text.Json;
 using Web.Models.Dtos;
 
-namespace Web.Services;
+namespace Web.Camunda;
 
 public class CamundaDeployment
 {
