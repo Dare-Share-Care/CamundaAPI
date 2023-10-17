@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1rh5wcm" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.15.2" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.19.0">
+  <bpmn:process id="OLA2Process" name="Customer Complains Process" isExecutable="true" camunda:historyTimeToLive="180">
+    <bpmn:startEvent id="StartEvent_1" name="User wants to complain">
+      <bpmn:outgoing>Flow_0m7cx38</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="FindContactInfo" name="Find Contact Information">
+      <bpmn:incoming>Flow_0m7cx38</bpmn:incoming>
+      <bpmn:outgoing>Flow_0jzmqhj</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_0m7cx38" sourceRef="StartEvent_1" targetRef="FindContactInfo" />
+    <bpmn:exclusiveGateway id="Gateway_0epokfm">
+      <bpmn:incoming>Flow_0jzmqhj</bpmn:incoming>
+      <bpmn:outgoing>Flow_0bilrps</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1cisp1u</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0jzmqhj" sourceRef="FindContactInfo" targetRef="Gateway_0epokfm" />
+    <bpmn:task id="SendComplaint" name="Send Complaint">
+      <bpmn:incoming>Flow_0bilrps</bpmn:incoming>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_0bilrps" name="Correct email" sourceRef="Gateway_0epokfm" targetRef="SendComplaint">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">#{email == 'camundaiscool@gmail.com'}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:endEvent id="StopEvent_1">
+      <bpmn:incoming>Flow_1cisp1u</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1cisp1u" name="Wrong email" sourceRef="Gateway_0epokfm" targetRef="StopEvent_1" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="OLA2Process">
+      <bpmndi:BPMNShape id="Gateway_0epokfm_di" bpmnElement="Gateway_0epokfm" isMarkerVisible="true">
+        <dc:Bounds x="425" y="212" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0gk2kyr_di" bpmnElement="StopEvent_1">
+        <dc:Bounds x="622" y="82" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="629" y="5" width="23" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0x5je87_di" bpmnElement="SendComplaint">
+        <dc:Bounds x="600" y="197" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0owzfea_di" bpmnElement="FindContactInfo">
+        <dc:Bounds x="240" y="197" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="132" y="219" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="116" y="262" width="68" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0jzmqhj_di" bpmnElement="Flow_0jzmqhj">
+        <di:waypoint x="340" y="237" />
+        <di:waypoint x="425" y="237" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0bilrps_di" bpmnElement="Flow_0bilrps">
+        <di:waypoint x="475" y="237" />
+        <di:waypoint x="600" y="237" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="505" y="219" width="66" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1cisp1u_di" bpmnElement="Flow_1cisp1u">
+        <di:waypoint x="450" y="212" />
+        <di:waypoint x="450" y="100" />
+        <di:waypoint x="622" y="100" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="502" y="83" width="62" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0m7cx38_di" bpmnElement="Flow_0m7cx38">
+        <di:waypoint x="168" y="237" />
+        <di:waypoint x="240" y="237" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
