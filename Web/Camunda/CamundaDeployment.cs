@@ -5,11 +5,11 @@ using Web.Models.Dtos;
 
 namespace Web.Services;
 
-public class DeploymentService
+public class CamundaDeployment
 {
     private readonly HttpClient _httpClient;
 
-    public DeploymentService()
+    public CamundaDeployment()
     {
         _httpClient = new HttpClient();
     }

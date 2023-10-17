@@ -4,11 +4,11 @@ using Web.Models.Dtos;
 
 namespace Web.Services;
 
-public class ProcessService
+public class CamundaProcess
 {
     private readonly HttpClient _httpClient;
     
-    public ProcessService()
+    public CamundaProcess()
     {
         _httpClient = new HttpClient();
     }

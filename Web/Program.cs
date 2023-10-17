@@ -21,8 +21,12 @@ builder.Services.AddCors(options =>
 });
 
 
-builder.Services.AddScoped<DeploymentService>();
-builder.Services.AddScoped<ProcessService>();
+//Camunda Services
+builder.Services.AddScoped<CamundaDeployment>();
+builder.Services.AddScoped<CamundaProcess>();
+
+//Web Services
+builder.Services.AddScoped<EmailService>();
 
 var app = builder.Build();
 

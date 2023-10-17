@@ -8,20 +8,20 @@ namespace Web.Controllers;
 [ApiController]
 public class CamundaController : ControllerBase
 {
-    private readonly DeploymentService _deploymentService;
-    private readonly ProcessService _processService;
+    private readonly CamundaDeployment _camundaDeployment;
+    private readonly CamundaProcess _camundaProcess;
 
-    public CamundaController(DeploymentService deploymentService, ProcessService processService)
+    public CamundaController(CamundaDeployment camundaDeployment, CamundaProcess camundaProcess)
     {
-        _deploymentService = deploymentService;
-        _processService = processService;
+        _camundaDeployment = camundaDeployment;
+        _camundaProcess = camundaProcess;
     }
     
     [HttpPost]
     [Route("deployment/deploy")]
     public async Task<IActionResult> Deploy([FromBody] DeploymentDto dto)
     {
-        var result = await _deploymentService.Deploy(dto.Name);
+        var result = await _camundaDeployment.Deploy(dto.Name);
         return Ok(result);
     }
     
@@ -29,7 +29,7 @@ public class CamundaController : ControllerBase
     [Route("deployment/delete")]
     public async Task<IActionResult> DeleteCamundaDeployment([FromBody] DeploymentDto dto)
     {
-        var response = await _deploymentService.DeleteDeployment(dto.Id);
+        var response = await _camundaDeployment.DeleteDeployment(dto.Id);
         return Ok(response);
     }
 
@@ -37,7 +37,7 @@ public class CamundaController : ControllerBase
     [Route("deployment/list")]
     public async Task<IActionResult> GetCamundaDeployments()
     {
-        var response = await _deploymentService.GetDeployments();
+        var response = await _camundaDeployment.GetDeployments();
         return Ok(response);
     }
     
@@ -45,7 +45,7 @@ public class CamundaController : ControllerBase
     [Route("process/start")]
     public async Task<IActionResult> StartCamundaProcess([FromBody] StartProcessDto dto)
     {
-        var response = await _processService.StartCamundaProcess(dto.ProcessKey);
+        var response = await _camundaProcess.StartCamundaProcess(dto.ProcessKey);
         return Ok(response);
     }
     
@@ -53,7 +53,7 @@ public class CamundaController : ControllerBase
     [Route("process/list")]
     public async Task<IActionResult> GetCamundaProcesses()
     {
-        var response = await _processService.GetProcesses();
+        var response = await _camundaProcess.GetProcesses();
         return Ok(response);
     }
 }
