@@ -22,6 +22,7 @@ builder.Services.AddCors(options =>
 
 
 builder.Services.AddScoped<DeploymentService>();
+builder.Services.AddScoped<ProcessService>();
 
 var app = builder.Build();
 

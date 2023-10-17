@@ -9,10 +9,12 @@ namespace Web.Controllers;
 public class CamundaController : ControllerBase
 {
     private readonly DeploymentService _deploymentService;
+    private readonly ProcessService _processService;
 
-    public CamundaController(DeploymentService deploymentService)
+    public CamundaController(DeploymentService deploymentService, ProcessService processService)
     {
         _deploymentService = deploymentService;
+        _processService = processService;
     }
     
     [HttpPost]
@@ -38,5 +40,20 @@ public class CamundaController : ControllerBase
         var response = await _deploymentService.GetDeployments();
         return Ok(response);
     }
-
+    
+    [HttpPost]
+    [Route("process/start")]
+    public async Task<IActionResult> StartCamundaProcess([FromBody] StartProcessDto dto)
+    {
+        var response = await _processService.StartCamundaProcess(dto.ProcessKey);
+        return Ok(response);
+    }
+    
+    [HttpGet]
+    [Route("process/list")]
+    public async Task<IActionResult> GetCamundaProcesses()
+    {
+        var response = await _processService.GetProcesses();
+        return Ok(response);
+    }
 }
