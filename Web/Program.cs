@@ -1,5 +1,4 @@
 using Web.Camunda;
-using Web.Services;
 
 var policyName = "AllowOrigin";
 
@@ -25,9 +24,6 @@ builder.Services.AddCors(options =>
 builder.Services.AddScoped<CamundaDeployment>();
 builder.Services.AddScoped<CamundaProcess>();
 builder.Services.AddScoped<CamundaTask>();
-
-//Web Services
-builder.Services.AddScoped<EmailService>();
 
 var app = builder.Build();
 
