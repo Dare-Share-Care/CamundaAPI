@@ -1,11 +1,7 @@
-# Customer Complaints Handling Workflow
+# Camunda API Service in .NET
 
 ## Authors
 
 - Frederik Andersen
 - Janus Rasmussen
 - Julius Krüger
-
-## Business Scenario
-
-This workflow handles customer complaints from the point they're sent, then received till their resolution. The process involves reviewing, investigating, and resolving the complaint while potentially needing to contact the customer for additional information.
