@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Web.Camunda;
 using Web.Models.Dtos;
-using Web.Services;
 
 namespace Web.Controllers;
 
@@ -73,6 +72,22 @@ public class CamundaController : ControllerBase
     public async Task<IActionResult> CompleteCamundaTaskWithCondition(string id, [FromBody] CompleteTaskDto? dto)
     {
         var result = await _camundaTask.CompleteTask(id, dto);
+        return Ok(result);
+    }
+    
+    [HttpGet]
+    [Route("external-tasks")]
+    public async Task<IActionResult> GetExternalTasks()
+    {
+        var response = await _camundaTask.GetExternalTasks();
+        return Ok(response);
+    }
+    
+    [HttpPost]
+    [Route("external-task/{id}/complete")]
+    public async Task<IActionResult> CompleteExternalTask(string id, [FromBody] CompleteExternalTaskDto? dto)
+    {
+        var result = await _camundaTask.CompleteExternalTask(id, dto);
         return Ok(result);
     }
 }

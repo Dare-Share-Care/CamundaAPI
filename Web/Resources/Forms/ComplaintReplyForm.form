@@ -1,0 +1,56 @@
+{
+  "components": [
+    {
+      "label": "Customer Email Address",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0nsvg7d",
+        "columns": null
+      },
+      "id": "Field_1bni8og",
+      "key": "SenderEmailInput",
+      "disabled": true
+    },
+    {
+      "label": "Customer Name",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1nt6k08",
+        "columns": null
+      },
+      "id": "Field_1xh8qbd",
+      "key": "SenderName",
+      "disabled": true
+    },
+    {
+      "label": "Sender Email Body",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1j2ot3m",
+        "columns": null
+      },
+      "id": "Field_1dcl8p6",
+      "key": "EmailBody",
+      "disabled": true
+    },
+    {
+      "label": "Email Response Body",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0xsrwsq",
+        "columns": null
+      },
+      "id": "Field_124urlj",
+      "key": "EmailResponseBody"
+    }
+  ],
+  "type": "default",
+  "id": "ComplaintAnswerForm",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.15.2"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.19.0",
+  "schemaVersion": 10
+}

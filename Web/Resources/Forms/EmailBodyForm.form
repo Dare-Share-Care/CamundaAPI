@@ -1,0 +1,44 @@
+{
+  "components": [
+    {
+      "label": "Email Address",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0ljoroi",
+        "columns": null
+      },
+      "id": "Field_00snddr",
+      "key": "EmailInput",
+      "disabled": true
+    },
+    {
+      "label": "Email Subject",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1hd1anz",
+        "columns": null
+      },
+      "id": "Field_1oj6ac7",
+      "key": "EmailSubject"
+    },
+    {
+      "label": "Email Body",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0k4yhet",
+        "columns": null
+      },
+      "id": "Field_1vpkisw",
+      "key": "EmailBody"
+    }
+  ],
+  "type": "default",
+  "id": "EmailBodyForm",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.15.2"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.19.0",
+  "schemaVersion": 10
+}
